@@ -1,0 +1,74 @@
+* {
+  color: #344659;
+}
+
+.tableContainer {
+  width: unset !important;
+  margin: 2rem;
+  border: 1px solid #e0e0e0;
+}
+
+.tableheader {
+  display: flow-root;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem;
+  background-color: #eef4ff;
+}
+
+.searchCell {
+  float: right;
+}
+
+.titleCell {
+  float: left;
+  padding-top: 9.5px;
+  margin: 0 !important;
+}
+
+.statusIcon {
+  border-radius: 5px !important;
+  border: none !important;
+}
+
+tr:hover {
+  transition: 0.4s;
+  background-color: #f3f6fc;
+}
+
+.MuiTableHead-root > tr:hover {
+  background-color: unset !important;
+}
+
+.avatarLabel {
+  background-color: unset !important;
+}
+
+.contactBlock {
+  background-color: #edf3ff;
+}
+
+.contactBlock:hover {
+  transition: 0.4s;
+  background-color: #d8e5fc;
+}
+
+.contactIcon {
+  width: 18px !important;
+}
+
+.contactIcon:hover {
+  fill: #479bbb;
+}
+
+.css-79elbk {
+  position: inherit !important;
+  color: #fff !important;
+}
+
+.css-df17o1 {
+  background: rgba(6, 45, 94, 0.95) !important;
+}
+
+.css-42igfv {
+  margin-top: 20rem !important;
+}
