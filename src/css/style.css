@@ -53,6 +53,7 @@ tr:hover {
 }
 
 .contactIcon {
+  margin-bottom: -8px;
   width: 18px !important;
 }
 

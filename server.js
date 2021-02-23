@@ -1,31 +1,30 @@
 const express = require("express"),
   app = express(),
-  AmoCRM = require("amocrm-js"),
   port = process.env.port || 2000,
-  config = require("./lib/config.json"),
-  morgan = require("morgan");
+  morgan = require("morgan"),
+  handlers = require("./lib/handler/handler");
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-});
+app
+  .use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    next();
+  })
+  .use(morgan("dev"))
+  .use(express.static(__dirname + "/build"));
 
-const crm = new AmoCRM(config.amocrm);
+require("./lib/router/router")(app, handlers);
 
-app.use(morgan("dev")).use(express.static(__dirname + "/build"));
+app
+  .get("/*", (req, res) => {
+    res.sendFile(__dirname + "/build/index.html");
+  })
 
-require("./lib/router/router")(app, crm);
-
-app.get("/*", (req, res) => {
-  res.sendFile(__dirname + "/build/index.html");
-});
-
-app.listen(port, () => {
-  console.log("server up & listening at " + port);
-});
+  .listen(port, () => {
+    console.log("server up & listening at " + port);
+  });
